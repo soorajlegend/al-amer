@@ -56,7 +56,7 @@ const Auth = () => {
                     <img
                         src="/logo.png"
                         alt="logo"
-                        className='h-20 ' />
+                        className='h-4 lg:h-7 ' />
                 </nav>
                 <div className="flex justify-center w-full">
                     <div className="bg-black/80 backdrop-filter backdrop-blur-sm p-7 lg:p-12 rounded-lg text-white flex flex-col gap-y-4 w-full max-w-md">
