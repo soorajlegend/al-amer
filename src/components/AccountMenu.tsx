@@ -25,7 +25,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible, userImage, username 
                     <p className='text-sm group-hover/item:underline capitalize'>{username}</p>
                 </Link>
                 <hr className='border-neutral-700 h-px my-2'/>
-                <div className="px-3 text-center text-sm hover:underline">Sign out of Al Amer</div>
+                <div onClick={() => signOut()} className="px-3 text-center text-sm hover:underline">Sign out of Al Amer</div>
             </div>
         </div>
     )
