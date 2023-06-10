@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ userImage, username }) => {
 
     return (
         <div className='w-full fixed z-40'>
-            <div className={`flex px-4 lg:px-16 py-6 gap-x-4 ${showAccountMenu ? "bg-zinc-900/90" : "bg-transparent"} items-center
+            <div className={`flex px-4 lg:px-16 py-6 gap-x-4 ${showBackground ? "bg-zinc-900/90" : "bg-transparent"} items-center
              text-slate-100 `}>
                 <img
                     src="./logo.png"

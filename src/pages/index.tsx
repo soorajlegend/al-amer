@@ -3,6 +3,8 @@ import { NextPageContext} from 'next';
 import useCurrentUser from '@/app/hooks/useCurrentUser';
 import Navbar from '@/components/Navbar';
 import Billboard from '@/components/Billboard';
+import MovieList from '@/components/MovieList';
+import useMovieList from '@/app/hooks/useMovieList';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -25,12 +27,18 @@ export async function getServerSideProps(context: NextPageContext) {
 export default function Home() {
 
     const { data: user} = useCurrentUser()
+
+    const {data: movies = []} = useMovieList();
+
   return (
     <div className="flex flex-col">
         <Navbar
         username={user?.name}
         userImage={user?.image?.length > 0 ? user?.image : `https://ui-avatars.com/api/?name=${user?.name}`}/>
         <Billboard />
+        <div className="pb-40">
+            <MovieList title='Trending' data={movies} />
+        </div>
     </div>
   )
 }
