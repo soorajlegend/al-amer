@@ -1,7 +1,9 @@
 import React from 'react'
-import { BsFillPlayFill} from 'react-icons/bs'
+import { BsFillPlayFill } from 'react-icons/bs'
 import FavoriteButton from './FavoriteButton'
 import { useRouter } from 'next/router'
+import useInfoModal from '@/hooks/useInfoModal'
+import { BsChevronDown } from 'react-icons/bs'
 
 interface CardProps {
     data: Record<string, any>
@@ -10,6 +12,8 @@ interface CardProps {
 const MovieCard: React.FC<CardProps> = ({ data }) => {
 
     const router = useRouter();
+
+    const { openModal } = useInfoModal();
 
 
     return (
@@ -25,12 +29,18 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
                     alt="" />
                 <div className="z-10 bg-zinc-800 p-2 lg:p-4 absolute transition w-full shadow-md rounded-md">
                     <div className="flex items-center gap-3">
-                        <div 
-                        onClick={() => router.push(`/watch/${data?.id}`)}
-                        className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white text-neutral-800 rounded-full flex justify-center items-center transition hover:bg-neutral-300">
+                        <div
+                            onClick={() => router.push(`/watch/${data?.id}`)}
+                            className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white text-neutral-800 rounded-full flex justify-center items-center transition hover:bg-neutral-300">
                             <BsFillPlayFill size={30} />
                         </div>
                         <FavoriteButton movieId={data?.id} />
+
+                        <div
+                        onClick={() => openModal(data?.id)}
+                        className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10  bg-black/50 rounded-full flex justify-center items-center transition text-neutral-300  hover:border-neutral-500">
+                            <BsChevronDown size={25} />
+                        </div>
                     </div>
                     <p className='text-emerald-400 font-semibold mt-4'>
                         New <span className='text-white'>2023</span>
