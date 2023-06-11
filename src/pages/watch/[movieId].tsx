@@ -14,9 +14,9 @@ const Watch = () => {
 
     return (
         <div className='w-screen h-screen'>
-            <nav className='fixed w-full p-4 z-10 flex items-center gap-8 bg-black/60 backdrop-blur-md text-slate-400'>
+            <nav className='fixed w-full p-4 z-10 flex items-center gap-8 bg-gradient-to-b from-black/60 via-black/10  text-neutral-100'>
                 <BsChevronLeft onClick={() => router.push('/')} className='cursor-pointer' size={30} />
-                <p className='text-xl md:text-2xl font-bold'>
+                <p className='text-xl md:text-2xl font-bold drop-shadow-md'>
                     <span className='font-light'>Watching: </span>
                     {data?.title}
                 </p>
