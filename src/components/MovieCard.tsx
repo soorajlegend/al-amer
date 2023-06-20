@@ -17,7 +17,7 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
 
 
     return (
-        <div className='group bg-zinc-900 col-span relative my-1 md:my-0 h-[35vh] lg:h-[3-12vw] text-neutral-400'>
+        <div className='group bg-zinc-900 col-span relative pb-5 md:pb-0 h-[23rem] lg:h-[13vw] text-neutral-400'>
             <img
                 src={data?.thumbnailUrl}
                 className='cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[24vh] lg:h-[13vw]'
@@ -25,9 +25,10 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
             <div className="lg:opacity-0 absolute top-0 transition duration-500 z-10 sm:visible  delay-200 w-full lg:scale-0 md:group-hover:scale-110 md:group-hover:-translate-y-[6vw] md:group-hover:translate-x-[2vw] group-hover:opacity-100 ">
                 <img
                     src={data?.thumbnailUrl}
+                    onClick={() => router.push(`/watch/${data?.id}`)}
                     className='cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[24vh] lg:h-[13vw]'
                     alt="hover card image" />
-                <div className="z-10 bg-zinc-800 p-2 lg:p-4 absolute transition w-full shadow-md rounded-md">
+                <div className="z-10 bg-zinc-800 p-2 pb-4 lg:p-4  absolute transition w-full shadow-md rounded-md">
                     <div className="flex items-center gap-3">
                         <div
                             onClick={() => router.push(`/watch/${data?.id}`)}
@@ -37,7 +38,7 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
                         <FavoriteButton movieId={data?.id} />
                         <div
                         onClick={() => openModal(data?.id)}
-                        className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10  bg-black/50 rounded-full flex justify-center items-center transition text-neutral-300  hover:border-neutral-500">
+                        className="cursor-pointer ml-auto group/item p-2 w-8 h-8 lg:w-10 lg:h-10  bg-black/50 rounded-full flex justify-center items-center transition text-neutral-300  hover:border-neutral-500">
                             <BsChevronDown size={25} />
                         </div>
                     </div>
