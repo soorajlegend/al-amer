@@ -45,7 +45,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
     const Icon = isFavorite ? IoHeartSharp : IoHeartOutline
 
     return (
-        <div onClick={toggleFavorites} className='cursor-pointer group/item w-6 h-6 lg:w-10 lg:h-10  bg-black/50 rounded-full flex justify-center items-center transition  hover:border-neutral-500'>
+        <div onClick={toggleFavorites} className='cursor-pointer group/item p-1 w-8 h-8 lg:w-10 lg:h-10  bg-black/50 rounded-full flex justify-center items-center transition  hover:border-neutral-500'>
             <Icon className={`transition ${isFavorite ? "text-red-700 hover:opacity-50 " : "text-neutral-300 hover:text-neutral-500 "}`} size={30} />
         </div>
     )
