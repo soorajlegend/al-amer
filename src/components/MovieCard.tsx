@@ -17,7 +17,7 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
 
 
     return (
-        <div className='group bg-zinc-900 col-span relative h-[35vh] lg:h-[3-12vw] text-neutral-400'>
+        <div className='group bg-zinc-900 col-span relative my-1 md:my-0 h-[35vh] lg:h-[3-12vw] text-neutral-400'>
             <img
                 src={data?.thumbnailUrl}
                 className='cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[24vh] lg:h-[13vw]'
