@@ -1,10 +1,29 @@
-import Input from '@/components/Input'
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { NextPageContext } from 'next';
+import { getSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router'
 import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
+
+import Input from '@/components/Input'
+
+export async function getServerSideProps(context: NextPageContext) {
+    const session = await getSession(context);
+  
+    if (session) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        }
+      }
+    }
+  
+    return {
+      props: {}
+    }
+  }
 
 const Auth = () => {
     const [email, setEmail] = useState("")
@@ -28,6 +47,7 @@ const Auth = () => {
                 redirect: false,
                 callbackUrl: '/'
             })
+            
             router.push('/')
         } catch (error) {
             console.log(error)
