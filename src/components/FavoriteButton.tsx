@@ -29,7 +29,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
             response = await axios.patch('/api/favorite', { movieId });
         } else {
             response = await axios.post('/api/favorite', { movieId });
-        }
+        }   
 
         const updateFavoriteIds = response?.data?.favoriteIds;
 
