@@ -17,12 +17,12 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
 
 
     return (
-        <div className='group bg-zinc-900 col-span relative h-[25vh] lg:h-[3-12vw] text-neutral-400'>
+        <div className='group bg-zinc-900 col-span relative h-[35vh] lg:h-[3-12vw] text-neutral-400'>
             <img
                 src={data?.thumbnailUrl}
                 className='cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[24vh] lg:h-[13vw]'
                 alt="thumbnail" />
-            <div className="opacity-0 absolute top-0 transition duration-500 z-10 invisible sm:visible delay-200 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100 ">
+            <div className="lg:opacity-0 absolute top-0 transition duration-500 z-10 sm:visible  delay-200 w-full lg:scale-0 md:group-hover:scale-110 md:group-hover:-translate-y-[6vw] md:group-hover:translate-x-[2vw] group-hover:opacity-100 ">
                 <img
                     src={data?.thumbnailUrl}
                     className='cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[24vh] lg:h-[13vw]'
