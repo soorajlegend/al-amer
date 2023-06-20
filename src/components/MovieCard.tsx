@@ -17,16 +17,16 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
 
 
     return (
-        <div className='group bg-zinc-900 col-span relative h-[12vw] text-neutral-400'>
+        <div className='group bg-zinc-900 col-span relative h-[25vh] lg:h-[3-12vw] text-neutral-400'>
             <img
                 src={data?.thumbnailUrl}
-                className='cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[12vw]'
+                className='cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[24vh] lg:h-[13vw]'
                 alt="thumbnail" />
             <div className="opacity-0 absolute top-0 transition duration-500 z-10 invisible sm:visible delay-200 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100 ">
                 <img
                     src={data?.thumbnailUrl}
-                    className='cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]'
-                    alt="" />
+                    className='cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[24vh] lg:h-[13vw]'
+                    alt="hover card image" />
                 <div className="z-10 bg-zinc-800 p-2 lg:p-4 absolute transition w-full shadow-md rounded-md">
                     <div className="flex items-center gap-3">
                         <div
@@ -35,7 +35,6 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
                             <BsFillPlayFill size={30} />
                         </div>
                         <FavoriteButton movieId={data?.id} />
-
                         <div
                         onClick={() => openModal(data?.id)}
                         className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10  bg-black/50 rounded-full flex justify-center items-center transition text-neutral-300  hover:border-neutral-500">
