@@ -25,5 +25,6 @@ interface Content {
   moreInfo?: string;
   browse?: string;
   trending?: string;
+  new?: string;
 
 }

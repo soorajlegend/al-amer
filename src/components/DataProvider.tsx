@@ -75,6 +75,7 @@ export const DataProvider = ({ children }: DataProviderProps) => {
         moreInfo: choose("More info","معلومات اكثر"),
         browse: choose("Browse","تصفح"),
         trending: choose("Trending", "الشائع"),
+        new: choose("New","جديد"),
 }
 
 
