@@ -23,4 +23,5 @@ interface Content {
   alreadyHave?: string;
   play?: string;
   moreInfo?: string;
+  browse?: string;
 }

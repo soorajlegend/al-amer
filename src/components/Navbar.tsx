@@ -59,8 +59,8 @@ const Navbar: React.FC<NavbarProps> = ({ userImage, username }) => {
                     <NavItem label={content?.nav?.myList!} />
                     <NavItem label={content?.nav?.browseByLanguages!} />
                 </div>
-                <div onClick={toggleMobileMenu} className="relative lg:hidden flex  items-center gap-2 ml-8 cursor-pointer text-sm transition hover:opacity-90">
-                    <span>Browse</span>
+                <div onClick={toggleMobileMenu} className={`relative lg:hidden flex  items-center gap-2 ml-8 cursor-pointer text-sm transition hover:opacity-90 ${choose("flex-row","flex-row-reverse")}`}>
+                    <span>{content?.browse}</span>
                     <BsChevronDown className={`transition ${showMobileMenu ? "rotate-180" : "rotate-0"}`} />
                     <MobileMenu visible={showMobileMenu} />
                 </div>
