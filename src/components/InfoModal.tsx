@@ -56,12 +56,12 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                         />
                         <div
                             onClick={handleClose}
-                            className="cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-slate-200 hover:opacity-70">
+                            className={`cursor-pointer absolute top-3 ${choose("right-3","left-3")} h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-slate-200 hover:opacity-70`}>
                             <AiOutlineClose size={20} />
                         </div>
-                        <div className="absolute bottom-[10%] left-10">
+                        <div className={`absolute bottom-[10%] ${choose("left-10 text-right","right-10 text-right")}`}>
                             <p className="text-3xl md:text-4xl h-full lg:text-5xl font-bold mb-8 text-white">{data?.title}</p>
-                            <div className="flex gap-4 items-center">
+                            <div className={`flex ${choose("flex-row","flex-row-reverse")} gap-4 items-center`}>
                                 <PlayButton movieId={data?.id} />
                                 <FavoriteButton movieId={data?.id} />
                             </div>
