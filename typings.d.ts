@@ -4,6 +4,14 @@ interface ContentValue {
 }
 
 interface Content {
+  nav?: {
+    home?: string;
+    series?: string;
+    films?: string;
+    newAndPopular?: string;
+    myList?: string;
+    browseByLanguages?: string;
+  };
   signIn?: string;
   email?: string;
   username?: string;
@@ -13,12 +21,6 @@ interface Content {
   firstTime?: string;
   CreateAccount?: string;
   alreadyHave?: string;
-  nav?: {
-    home?: string;
-    series?: string;
-    films?: string;
-    newAndPopular?: string;
-    myList?: string;
-    browseByLanguages?: string;
-  };
+  play?: string;
+  moreInfo?: string;
 }
