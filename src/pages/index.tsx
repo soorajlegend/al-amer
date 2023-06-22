@@ -40,7 +40,7 @@ export default function Home() {
       <InfoModal visible={isOpen!} onClose={closeModal!} />
         <Navbar
         username={user?.name}
-        userImage={user?.image?.length > 0 ? user?.image : `https://ui-avatars.com/api/?name=${user?.name}`}/>
+        userImage={user?.image?.length > 0 ? user?.image : `/avatar.webp`}/>
         <Billboard />
         <div className="pb-40">
             <MovieList title='Trending' data={movies} />

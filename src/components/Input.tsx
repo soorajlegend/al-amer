@@ -1,4 +1,5 @@
 import React from 'react'
+import { useData } from './DataProvider';
 
 interface InputProps {
     id: string;
@@ -15,6 +16,9 @@ const Input: React.FC<InputProps> = ({
     label,
     type,
 }) => {
+
+    const { choose } = useData();
+
     return (
         <div className="relative">
             <input
@@ -22,7 +26,7 @@ const Input: React.FC<InputProps> = ({
                 type={type || "text"}
                 value={value}
                 onChange={onChange}
-                className='
+                className={`
                 block
                 rounded-md 
                 px-6
@@ -36,11 +40,12 @@ const Input: React.FC<InputProps> = ({
                 focus:outline-none
                 focus:ring-0 
                 peer
-                '
+                ${choose("text-left", "text-right")}
+                `}
                 placeholder=' '
             />
             <label
-             className='
+                className={`
              absolute 
              text-md 
              text-zinc-400 
@@ -51,12 +56,13 @@ const Input: React.FC<InputProps> = ({
              top-4 
              z-10 
              origin-[0] 
-             left-6 
+             ${choose("left-6 ", "right-6 ")}
              peer-placeholder-shown:scale-100 
              peer-placeholder-shown:translate-y-0 
              peer-focus:scale-75
-             peer-focus:-translate-y-3' 
-             htmlFor={id}>{label}</label>
+             peer-focus:-translate-y-3
+             `}
+                htmlFor={id}>{label}</label>
         </div>
     )
 }

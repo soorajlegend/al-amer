@@ -3,6 +3,7 @@ import NavItem from './NavItem'
 import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import MobileMenu from './MobileMenu';
 import AccountMenu from './AccountMenu';
+import { useData } from './DataProvider';
 
 interface NavbarProps {
     userImage: string;
@@ -13,6 +14,8 @@ const Navbar: React.FC<NavbarProps> = ({ userImage, username }) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false)
     const [showAccountMenu, setShowAccountMenu] = useState(false)
     const [showBackground, setShowBackground] = useState(false)
+
+    const { content, choose } = useData();
 
     const toggleMobileMenu = useCallback(() => {
         setShowMobileMenu((current) => !current)
@@ -26,43 +29,43 @@ const Navbar: React.FC<NavbarProps> = ({ userImage, username }) => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY >= Top_offset){
+            if (window.scrollY >= Top_offset) {
                 setShowBackground(true);
-            }else{
+            } else {
                 setShowBackground(false);
             }
         }
 
         window.addEventListener('scroll', handleScroll);
         return () => {
-                window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         }
 
     }, []);
 
     return (
         <div className='w-full fixed z-40'>
-            <div className={`flex px-4 lg:px-16 py-6 gap-x-4 ${showBackground ? "bg-zinc-900/90" : "bg-transparent"} items-center
+            <div className={`flex ${choose("flex-row", "flex-row-reverse lg: space-x-reverse")} px-4 lg:px-16 py-6 gap-x-4 ${showBackground ? "bg-zinc-900/90" : "bg-transparent"} items-center
              text-slate-100 `}>
                 <img
                     src="./logo.png"
                     alt="logo"
                     className='h-4 lg:h-7' />
-                <div className="ml-8 hidden lg:flex gap-5 items-center ">
-                    <NavItem label='home' />
-                    <NavItem label='Series' />
-                    <NavItem label='Films' />
-                    <NavItem label='New & Popular' />
-                    <NavItem label='My list' />
-                    <NavItem label='Browse by languages' />
+                <div className={`hidden lg:flex gap-5 items-center ${choose("lg:flex-row ml-8", "lg:flex-row-reverse mr-8")}`}>
+                    <NavItem label={content?.nav?.home!} />
+                    <NavItem label={content?.nav?.series!} />
+                    <NavItem label={content?.nav?.films!} />
+                    <NavItem label={content?.nav?.newAndPopular!} />
+                    <NavItem label={content?.nav?.myList!} />
+                    <NavItem label={content?.nav?.browseByLanguages!} />
                 </div>
                 <div onClick={toggleMobileMenu} className="relative lg:hidden flex  items-center gap-2 ml-8 cursor-pointer text-sm transition hover:opacity-90">
                     <span>Browse</span>
-                    <BsChevronDown className={`transition ${showMobileMenu ? "rotate-180" : "rotate-0"}`}/>
+                    <BsChevronDown className={`transition ${showMobileMenu ? "rotate-180" : "rotate-0"}`} />
                     <MobileMenu visible={showMobileMenu} />
                 </div>
 
-                <div className="flex ml-auto items-center gap-7">
+                <div className={`flex ${choose("ml-auto flex-row", "mr-auto flex-row-reverse")} items-center gap-7`}>
                     <div className="cursor-pointer hover:opacity-70">
                         <BsSearch />
                     </div>
