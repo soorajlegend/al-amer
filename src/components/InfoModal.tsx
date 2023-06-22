@@ -5,6 +5,7 @@ import PlayButton from './PlayButton'
 import FavoriteButton from './FavoriteButton'
 import useInfoModal from '@/hooks/useInfoModal'
 import useMovie from '@/hooks/useMovie'
+import { useData } from './DataProvider'
 
 
 interface InfoModalProps {
@@ -15,11 +16,17 @@ interface InfoModalProps {
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
 
 
+    if (!visible) {
+        return null;
+    }
+
     const [isVisible, setIsVisible] = useState(!!visible);
 
     const { movieId } = useInfoModal();
 
     const { data = {} } = useMovie(movieId!);
+    
+    const { choose, content } = useData();
 
     useEffect(() => {
         setIsVisible(!!visible);
@@ -33,10 +40,6 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
         }, 300);
     }, [onClose]);
 
-
-    if (!visible) {
-        return null;
-    }
 
     return (
         <div className='z-50 transition duration-300 bg-black/70 backdrop-blur-0 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0'>
@@ -52,12 +55,12 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                             className='w-full brightness-[60%] object-cover h-full'
                         />
                         <div
-                        onClick={() => onClose()}
-                        className="cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-slate-200 hover:opacity-70">
+                            onClick={handleClose}
+                            className="cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black/70 flex items-center justify-center text-slate-200 hover:opacity-70">
                             <AiOutlineClose size={20} />
                         </div>
                         <div className="absolute bottom-[10%] left-10">
-                            <p className="text-3xl md:text-4xl h-full lg:text-5xl font-bold mb-8">{data?.title}</p>
+                            <p className="text-3xl md:text-4xl h-full lg:text-5xl font-bold mb-8 text-white">{data?.title}</p>
                             <div className="flex gap-4 items-center">
                                 <PlayButton movieId={data?.id} />
                                 <FavoriteButton movieId={data?.id} />
@@ -65,11 +68,11 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                         </div>
                     </div>
 
-                    <div className="px-12 py-8 text-neutral-400  text-lg">
-                        <p className='text-emerald-400 font-semibold'>New</p>
-                          <p>{data?.duration}</p>
-                          <p>{data?.genre}</p>
-                          <p>{data?.description}</p>
+                    <div className={`px-12 py-8 text-neutral-400 ${choose("text-left","text-right")} text-lg`}>
+                        <p className='text-emerald-400 font-semibold'>{content?.new}</p>
+                        <p>{data?.duration}</p>
+                        <p>{data?.genre}</p>
+                        <p>{data?.description}</p>
                     </div>
 
                 </div>
