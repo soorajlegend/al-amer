@@ -31,7 +31,7 @@ const MovieCard: React.FC<CardProps> = ({ data }) => {
                     onClick={() => router.push(`/watch/${data?.id}`)}
                     className='cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[24vh] lg:h-[13vw]'
                     alt="hover card image" />
-                <div className="z-10 bg-zinc-800 p-2 pb-4 lg:p-4  absolute transition w-full shadow-md rounded-md">
+                <div className="z-10 bg-zinc-800 px-5 lg:px-4 p-2 pb-4 lg:p-4  absolute transition w-full shadow-md rounded-md">
                     <div className={`flex ${choose("flex-row", "flex-row-reverse")} items-center gap-3`}>
                         <div
                             onClick={() => router.push(`/watch/${data?.id}`)}
