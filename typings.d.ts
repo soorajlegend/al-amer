@@ -24,4 +24,6 @@ interface Content {
   play?: string;
   moreInfo?: string;
   browse?: string;
+  trending?: string;
+
 }

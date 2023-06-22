@@ -73,8 +73,8 @@ export const DataProvider = ({ children }: DataProviderProps) => {
         alreadyHave: choose("Already have an account?", "هل لديك حساب؟"),
         play: choose("play","شغل"),
         moreInfo: choose("More info","معلومات اكثر"),
-        browse: choose("Browse","تصفح")
-        
+        browse: choose("Browse","تصفح"),
+        trending: choose("Trending", "الشائع"),
 }
 
 
