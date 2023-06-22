@@ -28,7 +28,6 @@ type DataProviderProps = {
 export const DataProvider = ({ children }: DataProviderProps) => {
     const [language, setLanguage] = useState<string>('en');
 
-
     useEffect(() => {
         const savelanguage: string | null = localStorage.getItem("language") || 'en';
         setLanguage(savelanguage);
@@ -54,7 +53,7 @@ export const DataProvider = ({ children }: DataProviderProps) => {
         }
     ]
 
-    const content = {
+    const content: Content = {
         signIn: choose("Sign in", "تسجيل الدخول"),
         email: choose("email", "بريد إلكتروني"),
         username: choose("username", "اسم المستخدم"),
@@ -64,6 +63,14 @@ export const DataProvider = ({ children }: DataProviderProps) => {
         firstTime: choose("First time using Al-amer?", "أول مرة تستخدم فيها العامر؟"),
         CreateAccount: choose("Create an account", "إنشاء حساب"),
         alreadyHave: choose("Already have an account?", "هل لديك حساب؟"),
+        nav: {
+            home: choose("Home","الصفحة الرئيسية"),
+            series: choose("Series","مسلسل"),
+            films: choose("Films","أفلام"),
+            newAndPopular: choose("New & Popular","جديد وشعبي"),
+            myList: choose("My List","قائمتي"),
+            browseByLanguages: choose("Browse By Languages","تصفح حسب اللغات"),
+        }
 }
 
 

@@ -9,6 +9,7 @@ import { FaGithub } from 'react-icons/fa'
 import Input from '@/components/Input'
 import { useData } from '@/components/DataProvider';
 import { BsChevronDown } from 'react-icons/bs';
+import LanguageSelector from '@/components/LanguageSelector';
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -76,25 +77,13 @@ const Auth = () => {
     return (
         <div className="relative bg-white min-h-screen h-full w-full bg-[url('/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
             <div className="bg-black lg:bg-black/70 w-full min-h-screen h-full">
-                <nav className="px-12 py-5 flex justify-between">
+                <nav className={`px-12 py-5 flex justify-between ${choose("flex-row", "flex-row-reverse")}`}>
                     <img
                         src="/logo.png"
                         alt="logo"
                         className='h-4 lg:h-7 ' />
 
-                    <div className="relative z-40 right-0 mr-5 bg-rose-500/70 backdrop-blur-sm text-white group px-3 py-2 rounded-lg hover:opacity-70 transition-opacity cursor-pointer">
-                        <span className='text-sm flex items-center tracking-wide'>{languages?.find(lang => lang.value == language)?.title} <BsChevronDown /></span>
-                        <div className="absolute z-0 insets-0 mt-2 -translaste-x-full right-0 w-auto  bg-black/50 backdrop-blur-md rounded-md  px-1 pt-4 pb-1 hidden delay-500 group-hover:flex flex-col">
-                            {
-                                languages?.filter(lang => lang.value !== language).map(lang => (
-                                    <span
-                                        className='whitespace-nowrap py-1 px-3 hover:bg-white/80 hover:text-slate-800 w-full rounded-md transition-all'
-                                        onClick={() => setLanguage(lang?.value)}
-                                        key={lang?.value}>{lang?.title}</span>
-                                ))
-                            }
-                        </div>
-                    </div>
+                   <LanguageSelector />
                 </nav>
                 <div className="flex justify-center w-full">
                     <div className="bg-black/80 backdrop-filter backdrop-blur-sm p-7 lg:p-12 rounded-lg text-white flex flex-col gap-y-4 w-full max-w-md">

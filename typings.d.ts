@@ -13,4 +13,12 @@ interface Content {
   firstTime?: string;
   CreateAccount?: string;
   alreadyHave?: string;
+  nav?: {
+    home?: string;
+    series?: string;
+    films?: string;
+    newAndPopular?: string;
+    myList?: string;
+    browseByLanguages?: string;
+  };
 }
